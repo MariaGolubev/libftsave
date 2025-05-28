@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:38:48 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 14:20:37 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 16:01:24 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 # include <sys/select.h>
 # include <unistd.h>
 
-typedef struct s_ctx
-{
-	t_ptrlist			*ptrs;
-	int					fds[FD_SETSIZE];
-}						t_ctx;
-
 typedef struct s_ptrlist
 {
 	void				*ptr;
 	struct s_ptrlist	*next;
 }						t_ptrlist;
+
+typedef struct s_ctx
+{
+	t_ptrlist			*ptrs;
+	int					fds[FD_SETSIZE];
+}						t_ctx;
 
 char					**ft_ctxsplit(t_ctx *ctx, const char *src, char c);
 char					**ft_split(const char *src, char c);

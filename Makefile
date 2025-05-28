@@ -27,8 +27,6 @@ DEPS 	:= $(OBJS:.o=.d)
 
 .PHONY: all clean fclean re
 
--include $(DEPS)
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -47,5 +45,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
 
 
