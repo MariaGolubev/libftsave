@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:31:15 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 12:32:47 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:17:57 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ char	*ft_ctxstrjoin(t_ctx *ctx, const char *s1, const char *s2)
 	return (result);
 }
 
+#ifdef STATIC
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	return (ft_ctxstrjoin(ft_ctx_get(), s1, s2));
+	return (ft_ctxstrjoin(ft_ctx(), s1, s2));
 }
+#endif

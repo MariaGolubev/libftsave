@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:18:13 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 12:28:37 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:17:31 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ char	**ft_ctxsplit(t_ctx *ctx, const char *s, char c)
 	return (arr);
 }
 
+#ifdef STATIC
+
 char	**ft_split(const char *s, char c)
 {
-	return (ft_ctxsplit(ft_ctx_get(), s, c));
+	return (ft_ctxsplit(ft_ctx(), s, c));
 }
+#endif

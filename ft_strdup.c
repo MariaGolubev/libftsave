@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:43:52 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 11:47:59 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:17:45 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_ctxstrdup(t_ctx *ctx, const char *s1)
 	return (ft_memcpy(copy, s1, size));
 }
 
+#ifdef STATIC
+
 char	*ft_strdup(const char *s1)
 {
-	return (ft_ctxstrdup(ft_ctx_get(), s1));
+	return (ft_ctxstrdup(ft_ctx(), s1));
 }
+#endif

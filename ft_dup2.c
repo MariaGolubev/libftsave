@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_panic.c                                         :+:    :+:            */
+/*   ft_dup2.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/05/28 12:58:43 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:15:47 by mgolubev      ########   odam.nl         */
+/*   Created: 2025/05/28 20:27:13 by mgolubev      #+#    #+#                 */
+/*   Updated: 2025/05/28 20:28:31 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ctxpanic(t_ctx *ctx, const char *msg, int status)
+int	ft_ctxdup2(t_ctx *ctx, int fd, int fd2)
 {
-	ft_putstr_fd("Panic!: ", STDERR_FILENO);
-	if (msg)
-		ft_putendl_fd(msg, STDERR_FILENO);
-	ft_ctxexit(ctx, status);
+	if (!ctx || fd < 0 || fd >= FD_SETSIZE || fd2 < 0 || fd2 >= FD_SETSIZE)
+		return (-1);
+	if (dup2(fd, fd2) == -1)
+		return (-1);
+	ctx->fds[fd2] = fd2;
+	return (fd2);
 }
-
-#ifdef STATIC
-
-void	ft_panic(const char *msg, int status)
-{
-	ft_ctxpanic(ft_ctx(), msg, status);
-}
-#endif

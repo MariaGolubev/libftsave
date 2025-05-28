@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:38:44 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 12:40:42 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:18:27 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char	*ft_ctxstrtrim(t_ctx *ctx, const char *src, const char *set)
 	return (result);
 }
 
+#ifdef STATIC
+
 char	*ft_strtrim(const char *src, const char *set)
 {
-	return (ft_ctxstrtrim(ft_ctx_get(), src, set));
+	return (ft_ctxstrtrim(ft_ctx(), src, set));
 }
+#endif

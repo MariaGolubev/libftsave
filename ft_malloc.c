@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:16:47 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 11:17:31 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:05:55 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	*ft_ctxmalloc(t_ctx *ctx, size_t size)
 {
 	void	*ptr;
 
-	if (size == 0)
+	if (size == 0 || ctx == NULL)
 		return (NULL);
 	ptr = malloc(size);
 	if (!ptr)
 		return (NULL);
-	if (ft_ctx_register_ptr(ctx, ptr) != 0)
+	if (ft_ptrlist_prepend(&ctx->ptrs, ptr))
 	{
 		free(ptr);
 		return (NULL);
@@ -29,7 +29,10 @@ void	*ft_ctxmalloc(t_ctx *ctx, size_t size)
 	return (ptr);
 }
 
+#ifdef STATIC
+
 void	*ft_malloc(size_t size)
 {
-	return (ft_ctxmalloc(ft_ctx_get(), size));
+	return (ft_ctxmalloc(ft_ctx(), size));
 }
+#endif

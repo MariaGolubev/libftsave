@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:18:04 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 11:20:43 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:04:49 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	*ft_ctxcalloc(t_ctx *ctx, size_t m, size_t n)
 	return (buff);
 }
 
+#ifdef STATIC
+
 void	*ft_calloc(size_t count, size_t size)
 {
-	return (ft_ctxcalloc(ft_ctx_get(), count, size));
+	return (ft_ctxcalloc(ft_ctx(), count, size));
 }
+#endif

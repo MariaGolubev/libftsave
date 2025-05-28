@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:14:07 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 11:14:42 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 19:56:43 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_ctxclose(t_ctx *ctx, int fd)
 
 void	ft_close(int fd)
 {
-	ft_ctxclose(ft_ctx_get(), fd);
+	ft_ctxclose(ft_ctx(), fd);
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_panic.c                                         :+:    :+:            */
+/*   ft_pipe.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/05/28 12:58:43 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:15:47 by mgolubev      ########   odam.nl         */
+/*   Created: 2025/05/28 20:23:07 by mgolubev      #+#    #+#                 */
+/*   Updated: 2025/05/28 20:25:31 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ctxpanic(t_ctx *ctx, const char *msg, int status)
+int	ft_ctxpipe(t_ctx *ctx, int *fds)
 {
-	ft_putstr_fd("Panic!: ", STDERR_FILENO);
-	if (msg)
-		ft_putendl_fd(msg, STDERR_FILENO);
-	ft_ctxexit(ctx, status);
+	int	ret;
+
+	if (!ctx || !fds)
+		return (-1);
+	ret = pipe(fds);
+	if (ret == -1)
+		return (-1);
+	ctx->fds[fds[0]] = fds[0];
+	ctx->fds[fds[1]] = fds[1];
+	return (0);
 }
 
 #ifdef STATIC
 
-void	ft_panic(const char *msg, int status)
+int	ft_pipe(int *fds)
 {
-	ft_ctxpanic(ft_ctx(), msg, status);
+	return (ft_ctxpipe(ft_ctx(), fds));
 }
 #endif

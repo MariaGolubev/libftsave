@@ -1,10 +1,12 @@
 NAME 	:= libft.a
 
 CC 		:= cc
-CFLAGS 	:= -Wall -Wextra -Werror -MMD -g3
+CFLAGS 	:= -Wall -Wextra -Werror -MMD 
 AR 		:= ar
 ARFLAGS := rcs
 RM 		:= rm -fr
+
+FEATURES = STATIC,OPEN,PIPE
 
 OBJDIR 	:= obj
 
@@ -19,7 +21,18 @@ SRCS    :=  ft_atoi.c       ft_bzero.c     ft_calloc.c     ft_close.c      \
 			ft_strjoin.c    ft_strlcat.c   ft_strlcpy.c    ft_strlen.c     \
 			ft_strmapi.c    ft_strncmp.c   ft_strnstr.c    ft_strrchr.c    \
 			ft_strtrim.c    ft_substr.c    ft_tolower.c    ft_toupper.c    \
-			ft_exit.c       ft_panic.c     ft_open.c
+			ft_exit.c       ft_panic.c
+
+ifneq (,$(findstring STATIC,$(FEATURES)))
+CFLAGS += -DSTATIC
+endif
+ifneq (,$(findstring OPEN,$(FEATURES)))
+SRCS += ft_open.c
+endif
+ifneq (,$(findstring PIPE,$(FEATURES)))
+SRCS += ft_pipe.c ft_dup.c ft_dup2.c
+endif
+
 
 
 OBJS 	:= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

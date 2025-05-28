@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:48:56 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 16:38:03 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:15:20 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ char	*ft_ctxitoa(t_ctx *ctx, int n)
 	return (ft_itoa_str(str, n, len));
 }
 
+#ifdef STATIC
+
 char	*ft_itoa(int n)
 {
-	return (ft_ctxitoa(ft_ctx_get(), n));
+	return (ft_ctxitoa(ft_ctx(), n));
 }
+#endif
