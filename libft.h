@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:38:48 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 16:01:24 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 16:45:09 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ void					ft_ptrlist_destroy(t_ptrlist *ptrlist);
 void					ft_striteri(char *str, void (*fn)(unsigned int,
 								char *));
 int						ft_ptrlist_prepend(t_ptrlist **ptrlist, void *ptr);
+int						ft_memcmp(const void *src1, const void *src2, size_t n);
+void					*ft_memchr(const void *src, int c, size_t n);
 
 #endif
