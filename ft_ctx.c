@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:59:43 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:14:14 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:35:25 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_ctxdestroy(t_ctx *ctx)
 	ft_ptrlist_destroy(ctx->ptrs);
 	ctx->ptrs = NULL;
 	i = 0;
-	while (i < FD_SETSIZE)
+	while (i < MAX_FD)
 	{
 		if (ctx->fds[i] != -1)
 		{
@@ -48,7 +48,7 @@ t_ctx	*ft_ctx(void)
 		ctx.ptrs = NULL;
 		ctx.allocated = 0;
 		i = 0;
-		while (i < FD_SETSIZE)
+		while (i < MAX_FD)
 		{
 			ctx.fds[i] = -1;
 			i++;
@@ -75,7 +75,7 @@ t_ctx	*ft_ctx(void)
 	ctx->ptrs = NULL;
 	ctx->allocated = 1;
 	i = 0;
-	while (i < FD_SETSIZE)
+	while (i < MAX_FD)
 	{
 		ctx->fds[i] = -1;
 		i++;

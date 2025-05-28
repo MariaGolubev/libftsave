@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:38:48 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:29:40 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:44:16 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <sys/select.h>
 # include <unistd.h>
 
+# ifndef MAX_FD
+#  define MAX_FD	1024
+# endif
+
 typedef struct s_ptrlist
 {
 	void				*ptr;
@@ -27,7 +31,7 @@ typedef struct s_ptrlist
 typedef struct s_ctx
 {
 	t_ptrlist			*ptrs;
-	int					fds[FD_SETSIZE];
+	int					fds[MAX_FD];
 	int					allocated;
 }						t_ctx;
 
@@ -90,13 +94,13 @@ void					ft_bzero(void *s, size_t n);
 void					ft_close(int fd);
 void					ft_ctxdestroy(t_ctx *ctx);
 void					ft_destroy(void);
-void					ft_ctxpanic(t_ctx *ctx, const char *msg, int status);
+void					ft_ctxpanic(t_ctx *ctx, const char *msg);
 void					ft_ctxclose(t_ctx *ctx, int fd);
 void					ft_ctxexit(t_ctx *ctx, int status);
 void					ft_ctxfree(t_ctx *ctx, void *ptr);
 void					ft_exit(int status);
 void					ft_free(void *ptr);
-void					ft_panic(const char *msg, int status);
+void					ft_panic(const char *msg);
 void					ft_ptrlist_dellone(t_ptrlist **ptrlist, void *ptr);
 void					ft_ptrlist_destroy(t_ptrlist *ptrlist);
 void					ft_striteri(char *str, void (*fn)(unsigned int,

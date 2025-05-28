@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 20:27:13 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:28:31 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/05/28 20:35:25 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_ctxdup2(t_ctx *ctx, int fd, int fd2)
 {
-	if (!ctx || fd < 0 || fd >= FD_SETSIZE || fd2 < 0 || fd2 >= FD_SETSIZE)
+	if (!ctx || fd < 0 || fd >= MAX_FD || fd2 < 0 || fd2 >= MAX_FD)
 		return (-1);
 	if (dup2(fd, fd2) == -1)
 		return (-1);
