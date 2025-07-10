@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:23:47 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 11:24:19 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:09:38 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {

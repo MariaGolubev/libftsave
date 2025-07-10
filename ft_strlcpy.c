@@ -6,19 +6,29 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:33:06 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 12:34:18 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:30:07 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
-	size_t	srcsize;
+	size_t	src_size;
 
-	srcsize = ft_strlen(src);
+	if (dest == NULL || src == NULL)
+	{
+		errno = EINVAL;
+		return (0);
+	}
+	src_size = ft_strlen(src);
 	if (!destsize)
-		return (srcsize);
+	{
+		if (src_size > 0)
+			errno = EINVAL;
+		return (src_size);
+	}
 	while (*src && destsize > 1)
 	{
 		*dest = *src;
@@ -27,5 +37,5 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 		destsize--;
 	}
 	*dest = '\0';
-	return (srcsize);
+	return (src_size);
 }

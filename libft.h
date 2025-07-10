@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:38:48 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:44:16 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:45:04 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <sys/select.h>
 # include <unistd.h>
 
-# ifndef MAX_FD
-#  define MAX_FD	1024
-# endif
-
 typedef struct s_ptrlist
 {
 	void				*ptr;
@@ -31,7 +27,6 @@ typedef struct s_ptrlist
 typedef struct s_ctx
 {
 	t_ptrlist			*ptrs;
-	int					fds[MAX_FD];
 	int					allocated;
 }						t_ctx;
 
@@ -69,7 +64,6 @@ int						ft_islower(int c);
 int						ft_isprint(int c);
 int						ft_isspace(int c);
 int						ft_isupper(int c);
-int						ft_open(const char *path, int flags, mode_t mode);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_toupper(int c);
@@ -91,11 +85,9 @@ void					*ft_memcpy(void *dst, const void *src, size_t n);
 void					*ft_memmove(void *dst, const void *src, size_t n);
 void					*ft_memset(void *s, int c, size_t n);
 void					ft_bzero(void *s, size_t n);
-void					ft_close(int fd);
 void					ft_ctxdestroy(t_ctx *ctx);
 void					ft_destroy(void);
 void					ft_ctxpanic(t_ctx *ctx, const char *msg);
-void					ft_ctxclose(t_ctx *ctx, int fd);
 void					ft_ctxexit(t_ctx *ctx, int status);
 void					ft_ctxfree(t_ctx *ctx, void *ptr);
 void					ft_exit(int status);
@@ -108,11 +100,4 @@ void					ft_striteri(char *str, void (*fn)(unsigned int,
 int						ft_ptrlist_prepend(t_ptrlist **ptrlist, void *ptr);
 int						ft_memcmp(const void *src1, const void *src2, size_t n);
 void					*ft_memchr(const void *src, int c, size_t n);
-int						ft_ctxpipe(t_ctx *ctx, int *fds);
-int						ft_pipe(int *fds);
-int						ft_ctxdup(t_ctx *ctx, int fd);
-int						ft_ctxdup2(t_ctx *ctx, int fd, int fd2);
-int						ft_dup(int fd);
-int						ft_dup2(int fd, int fd2);
-
 #endif

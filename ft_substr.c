@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:42:50 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:18:34 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:35:05 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 char	*ft_ctxsubstr(t_ctx *ctx, const char *src, unsigned int start,
 		size_t len)
@@ -18,6 +19,11 @@ char	*ft_ctxsubstr(t_ctx *ctx, const char *src, unsigned int start,
 	size_t	src_len;
 	char	*substr;
 
+	if (src == NULL || ctx == NULL)
+	{
+		errno = EINVAL;
+		return (NULL);
+	}
 	substr = NULL;
 	src_len = ft_strlen(src);
 	if (start >= src_len)

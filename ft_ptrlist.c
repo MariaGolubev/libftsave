@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:52:35 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 13:45:42 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:07:32 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 t_ptrlist	*ft_ptrlist_new(void *ptr)
 {
@@ -18,7 +19,10 @@ t_ptrlist	*ft_ptrlist_new(void *ptr)
 
 	node = (t_ptrlist *)malloc(sizeof(t_ptrlist));
 	if (!node)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	node->ptr = ptr;
 	node->next = NULL;
 	return (node);

@@ -6,21 +6,28 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:16:47 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:05:55 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:43:35 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 void	*ft_ctxmalloc(t_ctx *ctx, size_t size)
 {
 	void	*ptr;
 
-	if (size == 0 || ctx == NULL)
+	if (ctx == NULL)
+	{
+		errno = EINVAL;
 		return (NULL);
+	}
 	ptr = malloc(size);
 	if (!ptr)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	if (ft_ptrlist_prepend(&ctx->ptrs, ptr))
 	{
 		free(ptr);

@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:18:13 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:17:31 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:16:54 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 static char	**free_array(t_ctx *ctx, char **arr)
 {
@@ -78,8 +79,11 @@ char	**ft_ctxsplit(t_ctx *ctx, const char *s, char c)
 	size_t	count;
 	size_t	i;
 
-	if (!s)
+	if (s == NULL || ctx == NULL)
+	{
+		errno = EINVAL;
 		return (NULL);
+	}
 	count = count_substring(s, c);
 	arr = ft_ctxcalloc(ctx, count + 1, sizeof(char *));
 	if (arr == NULL)

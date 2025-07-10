@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:31:15 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:17:57 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:29:16 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 char	*ft_ctxstrjoin(t_ctx *ctx, const char *s1, const char *s2)
 {
@@ -18,8 +19,11 @@ char	*ft_ctxstrjoin(t_ctx *ctx, const char *s1, const char *s2)
 	size_t	len2;
 	char	*result;
 
-	if (!s1 || !s2)
+	if (!s1 || !s2 || !ctx)
+	{
+		errno = EINVAL;
 		return (NULL);
+	}
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	result = ft_ctxmalloc(ctx, len1 + len2 + 1);

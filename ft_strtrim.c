@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:38:44 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:18:27 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 20:34:42 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 static size_t	f_start(const char *src, const char *set)
 {
@@ -42,7 +43,10 @@ char	*ft_ctxstrtrim(t_ctx *ctx, const char *src, const char *set)
 	char	*result;
 
 	if (!src || !set)
+	{
+		errno = EINVAL;
 		return (NULL);
+	}
 	start = f_start(src, set);
 	end = f_end(start, src, set);
 	len = end - start;
