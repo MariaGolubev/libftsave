@@ -53,6 +53,7 @@ Function	Description
 - **ft_substr(...)** — Safe substring function with errno support  
 - **ft_itoa(...)** — Integer to string conversion with memory error checking  
 - **ft_strlcpy(...)** — Safe string copy, validates inputs and sets errno  
+- **ft_strtol(...)** — Safe string-to-long conversion with error checking and errno support  
 - **ft_destroy()** — Frees all memory allocated via ft_malloc()  
 - **ft_panic(msg)** — Prints an error message and exits with EXIT_FAILURE  
 
