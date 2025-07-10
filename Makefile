@@ -18,7 +18,8 @@ SRCS    :=  ft_atoi.c       ft_bzero.c      ft_calloc.c     ft_ctx.c        ft_f
 			ft_putstr_fd.c  ft_split.c      ft_strchr.c     ft_strcmp.c     ft_strdup.c     \
 			ft_striteri.c   ft_strjoin.c    ft_strlcat.c    ft_strlcpy.c    ft_strlen.c     \
 			ft_strmapi.c    ft_strncmp.c    ft_strnstr.c    ft_strrchr.c    ft_strtrim.c    \
-			ft_substr.c     ft_tolower.c    ft_toupper.c    ft_exit.c       ft_panic.c
+			ft_substr.c     ft_tolower.c    ft_toupper.c    ft_exit.c       ft_panic.c		\
+			ft_strtol.c
 
 ifneq (,$(findstring static,$(FEATURES)))
 CFLAGS += -DSTATIC
@@ -30,6 +31,9 @@ DEPS 	:= $(OBJS:.o=.d)
 .PHONY: all clean fclean re
 
 all: $(NAME)
+
+example: $(NAME)
+	$(CC) -o example example.c $(NAME) -I.
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -44,7 +48,7 @@ clean:
 	$(RM) $(OBJDIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) example
 
 re: fclean all
 

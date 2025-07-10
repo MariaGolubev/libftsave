@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:05:16 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 16:37:15 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:37:20 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 char	*ft_itoa_str(char *str, int n, size_t len)
 {

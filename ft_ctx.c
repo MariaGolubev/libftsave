@@ -6,12 +6,13 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:59:43 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/07/10 20:35:33 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:37:10 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
+#include <stdlib.h>
 
 void	ft_ctxdestroy(t_ctx *ctx)
 {

@@ -6,12 +6,13 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 10:52:35 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/07/10 20:07:32 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:37:37 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <errno.h>
+#include <stdlib.h>
 
 t_ptrlist	*ft_ptrlist_new(void *ptr)
 {

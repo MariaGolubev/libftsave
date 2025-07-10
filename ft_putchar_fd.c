@@ -6,7 +6,7 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:00:20 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/07/10 20:14:56 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:09:22 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 ssize_t	ft_putchar_fd(char c, int fd)
 {
-	int result;
-	
+	int	result;
+
 	if (fd < 0)
 	{
 		errno = EBADF;

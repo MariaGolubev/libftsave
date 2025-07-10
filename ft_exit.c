@@ -6,11 +6,12 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 12:57:25 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/05/28 20:14:36 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:37:44 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	ft_ctxexit(t_ctx *ctx, int status)
 {

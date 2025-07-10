@@ -6,12 +6,13 @@
 /*   By: mgolubev <mgolubev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/28 11:16:47 by mgolubev      #+#    #+#                 */
-/*   Updated: 2025/07/10 20:43:35 by mgolubev      ########   odam.nl         */
+/*   Updated: 2025/07/10 21:37:28 by mgolubev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <errno.h>
+#include <stdlib.h>
 
 void	*ft_ctxmalloc(t_ctx *ctx, size_t size)
 {
